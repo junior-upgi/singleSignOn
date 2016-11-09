@@ -59,7 +59,9 @@ class LoginController extends Controller
             $user_id = $user->ID;
             return redirect()->to($url.'?user_id='.$user_id);
         } else {
-            return view('login');
+            $id = $request->session()->getId();
+            return view('login')
+                ->with('id', $id);
         }
     }
 
