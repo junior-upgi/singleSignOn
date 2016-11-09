@@ -47,11 +47,16 @@ class LoginController extends Controller
     {
         $request = request();
         $data = $request->input();
-        
+        $url='';
+        if (isset($data)) {
+            $url = urldecode($data['url']);
+        }
+        /*
         if (!$request->session()->has('url')) {
             $url = urldecode($data['url']);
             $request->session()->put('url', $url);
         }
+        */
 
         if (Auth::check()) {
             $url = request()->session()->pull('url');
@@ -61,7 +66,8 @@ class LoginController extends Controller
         } else {
             $id = $request->session()->getId();
             return view('login')
-                ->with('id', $id);
+                ->with('id', $id)
+                ->with('url', $url);
         }
     }
 
@@ -89,7 +95,7 @@ class LoginController extends Controller
 
             if ($attempt) {
                 if (Auth::check()) {
-                    $url = request()->session()->pull('url');
+                    $url = request()->input('url');
                     $user = Auth::user();
                     $user_id = $user->ID;
                     return redirect()->to($url.'?user_id='.$user_id);

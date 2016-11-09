@@ -16,6 +16,7 @@
         <form class="form-signin" role="form" action="login" method="POST" style="max-width:330px;padding:15px;margin:auto;">
 			<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 			<input type="hidden" name="sss" value="{{ $id }}">
+			<input type="hidden" name="url" value="{{ $url }}">
             <h2 class="form-signin-heading">請輸入帳號密碼</h2>
 			<label for="account" class="sr-only">帳號</label>
 			<input type="text" id="account" name="account" class="form-control" minlength="4" maxlength="20" placeholder="帳號(員工編號)" required="" autofocus="">
