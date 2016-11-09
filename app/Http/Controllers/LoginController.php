@@ -59,7 +59,6 @@ class LoginController extends Controller
         */
 
         if (Auth::check()) {
-            $url = request()->session()->pull('url');
             $user = Auth::user();
             $user_id = $user->ID;
             return redirect()->to($url.'?user_id='.$user_id);
