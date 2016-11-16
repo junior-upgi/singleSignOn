@@ -22,4 +22,14 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    protected function userLoggedIn() 
+    {         
+        $this->be(new User(['mobileSystemAccount' => '16080003']));    
+    }
+    
+    protected function adminLoggedIn()
+    {
+        $this->be(new User(['mobileSystemAccount' => 'admin']));
+    }
 }

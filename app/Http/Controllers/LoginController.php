@@ -48,24 +48,16 @@ class LoginController extends Controller
         $request = request();
         $data = $request->input();
         $url='';
-        if (isset($data)) {
+        if (isset($data['url'])) {
             $url = urldecode($data['url']);
         }
-        /*
-        if (!$request->session()->has('url')) {
-            $url = urldecode($data['url']);
-            $request->session()->put('url', $url);
-        }
-        */
 
         if (Auth::check()) {
             $user = Auth::user();
             $user_id = $user->ID;
             return redirect()->to($url.'?user_id='.$user_id);
         } else {
-            $id = $request->session()->getId();
             return view('login')
-                ->with('id', $id)
                 ->with('url', $url);
         }
     }
@@ -99,16 +91,16 @@ class LoginController extends Controller
                     $user_id = $user->ID;
                     return redirect()->to($url.'?user_id='.$user_id);
                 } else {
-                    return Redirect::to('/')
+                    return redirect('/')
                     ->withErrors(['fail'=>'登入失敗!']);
                 }
             }
-            return Redirect::to('/')
+            return redirect('/')
                     ->withErrors(['fail'=>'帳號或密碼錯誤!']);
         }
-        return Redirect::to('/')
-                    ->withErrors($validator)
-                    ->withInput(\Input::except('password'));
+        return redirect('/')
+                    ->withErrors($validator);
+                    //->withInput(\Input::except('password'));
     }
 
     /**
@@ -118,6 +110,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('/');
+        return redirect('/');
     }
 }
