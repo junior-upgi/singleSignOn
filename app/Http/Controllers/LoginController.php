@@ -77,6 +77,7 @@ class LoginController extends Controller
             'account'=>'required',
             'password'=>'required'
         );
+        $url = request()->input('url');
         isset($input['remember']) ? $remember = true : $remember = false;
         //驗證表單
         $validator = Validator::make($input, $rules);
@@ -86,21 +87,20 @@ class LoginController extends Controller
 
             if ($attempt) {
                 if (Auth::check()) {
-                    $url = request()->input('url');
                     $user = Auth::user();
                     $user_id = $user->ID;
                     return redirect()->to($url.'?user_id='.$user_id);
                 } else {
-                    return redirect('/')
-                    ->withErrors(['fail'=>'登入失敗!']);
+                    return redirect('/?url=' . $url)
+                        ->withErrors(['fail'=>'登入失敗!']);
                 }
             }
-            return redirect('/')
-                    ->withErrors(['fail'=>'帳號或密碼錯誤!']);
+            return redirect('/?url=' . $url)
+                ->withErrors(['fail'=>'帳號或密碼錯誤!']);
         }
-        return redirect('/')
-                    ->withErrors($validator);
-                    //->withInput(\Input::except('password'));
+        return redirect('/?url=' . $url)
+            ->withErrors($validator);
+            //->withInput(\Input::except('password'));
     }
 
     /**
@@ -110,6 +110,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        $portal = env('PORTAL', 'http://upgi.ddns.net');
+        return redirect()->to($portal);
     }
 }
