@@ -60,6 +60,19 @@ return [
             'engine' => null,
         ],
 
+        'UPGWeb' => [
+            'driver' => 'sqlsrv',
+            'host' => '192.168.168.5',
+            'port' => '1433',
+            'database' => 'UPGWeb',
+            'username' => 'sa',
+            'password' => 'attn@3100',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
     ],
 
     /*

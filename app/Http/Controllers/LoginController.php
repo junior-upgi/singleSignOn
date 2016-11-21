@@ -96,7 +96,8 @@ class LoginController extends Controller
                 }
             }
             return redirect('/?url=' . $url)
-                ->withErrors(['fail'=>'帳號或密碼錯誤!']);
+                ->withErrors(['fail'=>'帳號或密碼錯誤!'])
+                ->withInput($request->except('password'));
         }
         return redirect('/?url=' . $url)
             ->withErrors($validator);

@@ -10,7 +10,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Model\User;
+use App\Models\User;
 
 /**
  * Class ProductRepository

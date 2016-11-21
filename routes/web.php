@@ -14,3 +14,6 @@
 Route::get('/', 'LoginController@show');
 Route::post('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
+Route::get('reset', 'ResetPasswordController@resetPassword');
+Route::post('check', 'ResetPasswordController@checkPersonal');
+Route::post('set', 'ResetPasswordController@setPassword');
