@@ -6,7 +6,7 @@
         "type": "php",
         "request": "launch",
         "port": 9000,
-        "serverSourceRoot": "/home/vagrant/Code/productDatabase",
+        "serverSourceRoot": "/home/vagrant/Code/singleSignOn",
         "localSourceRoot": "${workspaceRoot}"
       },
       {
@@ -14,7 +14,7 @@
         "type": "php",
         "request": "launch",
         "port": 9000,
-        "serverSourceRoot": "/var/www/html/productDatabase",
+        "serverSourceRoot": "/var/www/html/singleSignOn",
         "localSourceRoot": "${workspaceRoot}"
       }
     ]
