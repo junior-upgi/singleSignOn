@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => 'upgi',
+    'default' => env('upgi'),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,14 +47,14 @@ return [
     'connections' => [
 
         'upgi' => [
-            'driver' => 'mysql',
-            'host' => env('MYSQL_HOST', '192.168.168.86'),
-            'port' => env('MYSQL_PORT', '3306'),
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT'),
             'database' => 'upgiSystem',
-            'username' => env('MYSQL_USERNAME', 'spark'),
-            'password' => env('MYSQL_PASSWORD', 'pa676579'),
-            'charset' => env('MYSQL_CHARSET', 'utf8'),
-            'collation' => env('MYSQL_COLLATION', 'utf8_unicode_ci'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'strict' => false,
             'engine' => null,
@@ -62,11 +62,11 @@ return [
 
         'UPGWeb' => [
             'driver' => 'sqlsrv',
-            'host' => '192.168.168.5',
-            'port' => '1433',
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT'),
             'database' => 'UPGWeb',
-            'username' => 'sa',
-            'password' => 'attn@3100',
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
