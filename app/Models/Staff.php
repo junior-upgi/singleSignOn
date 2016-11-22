@@ -10,6 +10,7 @@ class Staff extends Model
     protected $table = "vStaff";
 
     protected $primaryKey = 'ID';
+    public $keyType = 'string';
     
     protected $fillable = [];
     protected $hidden = [];
