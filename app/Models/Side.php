@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Side extends Model
 {
-    protected $connection = 'UPGWeb';
-    protected $table = "vStaffNode";
+    //
+    protected $connection = 'upgi';
+    protected $table = "Side";
 
     protected $primaryKey = 'ID';
     public $keyType = 'string';
@@ -16,5 +17,4 @@ class Staff extends Model
     
     protected $fillable = [];
     protected $hidden = [];
-
 }

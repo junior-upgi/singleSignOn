@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
+use App\Models\Staff;
+
 class User extends Model implements AuthenticatableContract
 {
     use SoftDeletes;
@@ -19,6 +21,8 @@ class User extends Model implements AuthenticatableContract
 
     protected $primaryKey = 'ID';
     public $incrementing = false;
+
+    protected $dateFormat = 'Y-m-d H:i:s';
     
     protected $fillable = [
         'ID', 
@@ -29,4 +33,8 @@ class User extends Model implements AuthenticatableContract
     ];
     protected $hidden = array('password', 'remember_token');
 
+    public function staff()
+    {
+        return $this->hasOne(Staff::class, 'ID', 'erpID');
+    }
 }

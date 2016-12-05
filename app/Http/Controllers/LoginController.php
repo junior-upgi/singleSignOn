@@ -84,7 +84,6 @@ class LoginController extends Controller
         $type = env('WebSSO', 'LDAP');
         if ($validator->passes()) {
             $attempt = $this->common->singleSignOn($input['account'], $input['password'], $type);
-
             if ($attempt) {
                 if (Auth::check()) {
                     $user = Auth::user();
